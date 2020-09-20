@@ -1,3 +1,7 @@
+# Module List:
+# iankesh/resource-group/azure
+# ankesh/virtual-network/azure
+
 provider "azurerm" {
   version = "=2.20.0"
   features {}
@@ -11,14 +15,15 @@ module "az_resource_group" {
   creator  = "ankesh"
 }
 
-module "az_virtual_network"{
-  source = "../terraform-azure-virtual-network"
-  name = "ankesh-vnet"
+module "az_virtual_network" {
+  source              = "../terraform-azure-virtual-network"
+  name                = "ankesh-vnet"
   resource_group_name = module.az_resource_group.az_rg_name
-  address_space = "10.0.2.0/24"
-  env = "dev"
-  team_tag = "DevOps"
-  creator  = "ankesh"
+  # resource_group_name = "ankesh-workspace"
+  address_space       = "10.0.2.0/24"
+  env                 = "dev"
+  team_tag            = "DevOps"
+  creator             = "ankesh"
 }
 
 output "azure_resource_group_id" {
