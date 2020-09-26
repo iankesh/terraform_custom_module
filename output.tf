@@ -21,3 +21,7 @@ output "azure_subnet_name" {
 output "azure_subnet_address_prefix" {
   value = module.az_subnet.az_subnet_address_prefix
 }
+
+output "azure_public_ip_address" {
+  value = module.az_public_ip.az_public_ip_address
+}
