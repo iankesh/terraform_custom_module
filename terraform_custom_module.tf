@@ -3,6 +3,7 @@
 # | iankesh/virtual-network/azure
 # | iankesh/subnet/azure
 # | iankesh/security-group/azure
+# | iankesh/public-ip/azure
 
 module "az_resource_group" {
   source   = "../terraform-azure-resource-group"
@@ -57,4 +58,15 @@ module "az_public_ip" {
   env                 = "dev"
   team_tag            = "DevOps"
   creator             = "ankesh"
+}
+
+module "az_network_interface" {
+  source                = "../terraform-azure-network-interface"
+  name                  = "ankesh-network-interface"
+  resource_group_name   = module.az_resource_group.az_rg_name
+  vnet_name             = module.az_virtual_network.az_vnet_name
+  subnet_name           = module.az_subnet.az_subnet_name
+  private_ip_allocation = "Dynamic"
+  public_ip_id          = module.az_public_ip.az_public_ip_id
+  public_ip_name        = module.az_public_ip.az_public_ip_name
 }

@@ -25,3 +25,19 @@ output "azure_subnet_address_prefix" {
 output "azure_public_ip_address" {
   value = module.az_public_ip.az_public_ip_address
 }
+
+output "azure_public_ip_id" {
+  value = module.az_public_ip.az_public_ip_id
+}
+
+output "azure_public_ip_name" {
+  value = module.az_public_ip.az_public_ip_name
+}
+
+output "azure_network_interface_id" {
+  value = module.az_network_interface.az_network_interface_id
+}
+
+output "azure_network_interface_name" {
+  value = module.az_network_interface.az_network_interface_name
+}
