@@ -4,6 +4,7 @@
 # | iankesh/subnet/azure
 # | iankesh/security-group/azure
 # | iankesh/public-ip/azure
+# | iankesh/network-interface/azure
 
 module "az_resource_group" {
   source   = "../terraform-azure-resource-group"
