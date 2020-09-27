@@ -5,6 +5,7 @@
 # | iankesh/security-group/azure
 # | iankesh/public-ip/azure
 # | iankesh/network-interface/azure
+# | iankesh/virtual-machine/azure
 
 module "az_resource_group" {
   source   = "../terraform-azure-resource-group"
@@ -70,4 +71,19 @@ module "az_network_interface" {
   private_ip_allocation = "Dynamic"
   public_ip_id          = module.az_public_ip.az_public_ip_id
   public_ip_name        = module.az_public_ip.az_public_ip_name
+}
+
+module "az_virtual_machine" {
+  source                 = "../terraform-azure-virtual-machine"
+  name                   = "ankesh-vm"
+  resource_group_name    = module.az_resource_group.az_rg_name
+  network_interface_name = module.az_network_interface.az_network_interface_name
+  size_vm                = "Standard_D2_v2"
+  os_disk_name           = "ankesh-vm-disk"
+  os_profile_name        = "ankesh-vm-host"
+  os_profile_username    = "devops"
+  os_profile_password    = "Devops123456789"
+  env                    = "dev"
+  team_tag               = "DevOps"
+  creator                = "ankesh"
 }

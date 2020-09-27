@@ -41,3 +41,7 @@ output "azure_network_interface_id" {
 output "azure_network_interface_name" {
   value = module.az_network_interface.az_network_interface_name
 }
+
+output "azure_virtual_machine_name" {
+  value = module.az_virtual_machine.az_virtual_machine_id
+}
